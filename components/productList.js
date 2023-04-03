@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProductRow from "./ProductRow";
+import ProductRow from "..components/ProductRow";
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -9,7 +9,7 @@ function ProductList(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://erlingjuniorproductsite.000webhostapp.com/products.php')
+    axios.get(process.env.API)
       .then((response) => {
         setProducts(response.data);
       })
@@ -30,7 +30,7 @@ function ProductList(props) {
   const handleMassDelete = (event) => {
     event.preventDefault();
 
-    axios.delete('https://erlingjuniorproductsite.000webhostapp.com/products.php', {
+    axios.delete(process.env.API, {
       data: selectedProducts,
       headers: {
         'Content-Type': 'application/json'

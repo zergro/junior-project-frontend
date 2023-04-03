@@ -8,7 +8,7 @@ function App() {
   console.log(products);
 
   useEffect(() => {
-    axios.get('https://erlingjuniorproductsite.000webhostapp.com/products.php')
+    axios.get(process.env.API)
       .then((response) => {
         setProducts(response.data);
       })

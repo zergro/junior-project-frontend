@@ -43,7 +43,7 @@ function AddProduct() {
                 ...data,
                 dimension: formattedDimensions
             };
-            axios.post('https://erlingjuniorproductsite.000webhostapp.com/products.php', dataToSend, { validateStatus: false }).then((response) => {
+            axios.post(process.env.API, dataToSend, { validateStatus: false }).then((response) => {
                 console.log(response.data);
                 if (response.status === 201) {
                     console.log("Success");

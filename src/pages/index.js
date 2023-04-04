@@ -5,10 +5,10 @@ import ProductList from '../../components/productList';
 
 function App() {
   const [products, setProducts] = useState([]);
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
-    axios.get(process.env.API)
+    axios.get('products.php')
       .then((response) => {
         setProducts(response.data);
       })

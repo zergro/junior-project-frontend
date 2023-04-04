@@ -8,7 +8,7 @@ function AddProduct() {
     const [dimensions, setDimensions] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
 
-    console.log(dimensions);
+    // console.log(dimensions);
 
     const router = useRouter();
 
@@ -28,7 +28,7 @@ function AddProduct() {
             const { size } = dimensions;
             return `Size: ${size} MB`;
         } else {
-            console.log('Invalid type or dimensions:', type, key, dimensions);
+            // console.log('Invalid type or dimensions:', type, key, dimensions);
             return '';
         }
     }
@@ -43,8 +43,8 @@ function AddProduct() {
                 ...data,
                 dimension: formattedDimensions
             };
-            axios.post(process.env.API, dataToSend, { validateStatus: false }).then((response) => {
-                console.log(response.data);
+            axios.post('products.php', dataToSend, { validateStatus: false }).then((response) => {
+                // console.log(response.data);
                 if (response.status === 201) {
                     console.log("Success");
                     handleRedirect();
@@ -146,7 +146,7 @@ function AddProduct() {
                     onChange={(e) => handleSwitcher(e)}
                     required
                 >
-                    <option selected="true" disabled="disabled" value="">Select a product type</option>
+                    <option defaultValue="empty" disabled="disabled" value="empty">Select a product type</option>
                     <option value="DVD">DVD</option>
                     <option value="Book">Book</option>
                     <option value="Furniture">Furniture</option>

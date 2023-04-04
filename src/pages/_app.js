@@ -1,7 +1,8 @@
 import '../styles/globals.scss'
+import axios from 'axios';
 
-// import '../styles/HomeStyles.scss';
-///styles/AddStyles.scss';
+
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProductRow from "..components/ProductRow";
+import ProductRow from "./productRow";
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -9,7 +9,7 @@ function ProductList(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(process.env.API)
+    axios.get('products.php')
       .then((response) => {
         setProducts(response.data);
       })
@@ -30,14 +30,14 @@ function ProductList(props) {
   const handleMassDelete = (event) => {
     event.preventDefault();
 
-    axios.delete(process.env.API, {
+    axios.delete('products.php', {
       data: selectedProducts,
       headers: {
         'Content-Type': 'application/json'
       }
     })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         // Update your UI to reflect the deleted products
         setProducts(products.filter((product) => !selectedProducts.includes(product.id)));
         setSelectedProducts([]);

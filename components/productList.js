@@ -31,13 +31,10 @@ function ProductList(props) {
     event.preventDefault();
 
     axios.delete('products.php', {
-      data: selectedProducts,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      data: selectedProducts
     })
       .then(response => {
-        // console.log(response.data);
+        console.log(response.data);
         // Update your UI to reflect the deleted products
         setProducts(products.filter((product) => !selectedProducts.includes(product.id)));
         setSelectedProducts([]);

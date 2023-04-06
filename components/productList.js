@@ -30,8 +30,10 @@ function ProductList(props) {
   const handleMassDelete = (event) => {
     event.preventDefault();
 
-    axios.delete('products.php', {
-      data: selectedProducts
+    axios.delete('products.php', { data: selectedProducts,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
       .then(response => {
         console.log(response.data);
@@ -41,10 +43,11 @@ function ProductList(props) {
       })
       .catch(error => {
         console.error(error);
-      })};
+      })
+  };
 
   return (
-    <div>      
+    <div>
       <div className="productListHeader">
         <h3>Product list</h3>
         <div className="productListButton">

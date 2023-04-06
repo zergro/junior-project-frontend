@@ -43,8 +43,12 @@ function AddProduct() {
                 ...data,
                 dimension: formattedDimensions
             };
-            axios.post('products.php', dataToSend).then((response) => {
-                // console.log(response.data);
+            axios.post('products.php', dataToSend, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                console.log(response.data);
                 if (response.status === 201) {
                     console.log("Success");
                     handleRedirect();

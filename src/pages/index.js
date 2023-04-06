@@ -7,7 +7,9 @@ function App() {
   const [products, setProducts] = useState([]);
   // console.log(products);
 
+
   useEffect(() => {
+    console.log(window.location.origin);
     axios.get('products.php', {withCredentials: true})
       .then((response) => {
         setProducts(response.data);

@@ -43,12 +43,9 @@ function AddProduct() {
                 ...data,
                 dimension: formattedDimensions
             };
-            axios.post('products.php', dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }, {withCredentials: true}).then((response) => {
-                console.log(response.data);
+            console.log(dataToSend);
+            axios.post('products.php', dataToSend, {withCredentials: true}).then((response) => {
+                // console.log(response.data);
                 if (response.status === 201) {
                     console.log("Success");
                     handleRedirect();
@@ -150,7 +147,7 @@ function AddProduct() {
                     onChange={(e) => handleSwitcher(e)}
                     required
                 >
-                    <option defaultValue="empty" disabled="disabled" value="empty">Select a product type</option>
+                    <option selected="selected" hidden="hidden">Select a product type</option>
                     <option value="DVD">DVD</option>
                     <option value="Book">Book</option>
                     <option value="Furniture">Furniture</option>

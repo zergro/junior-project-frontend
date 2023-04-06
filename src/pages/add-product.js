@@ -43,21 +43,24 @@ function AddProduct() {
                 ...data,
                 dimension: formattedDimensions
             };
-            console.log(dataToSend);
-            axios.post('products.php', dataToSend, {withCredentials: true}).then((response) => {
-                // console.log(response.data);
-                if (response.status === 201) {
-                    console.log("Success");
-                    handleRedirect();
-                }
-                else if (response.status === 409) {
-                    setErrorMessage(response.data.error);
-                    console.log("SKU error");
-                }
-                else {
-                    console.log("Something strange happened");
-                }
-            });
+            // console.log(dataToSend);
+            axios.post('products.php', dataToSend, { withCredentials: true })
+                .then((response) => {
+                    if (response.status === 201) {
+                        console.log("Success");
+                        handleRedirect();
+                    }
+                    else {
+                        console.log("Success with wrong status");
+                    }
+                }).catch((error) => {
+                    if (error.response.status === 409) {
+                        setErrorMessage(error.response.data.error);
+                        console.log("SKU error");
+                    } else {
+                        console.log("Something strange happened");
+                    }
+                })
         };
     }
 

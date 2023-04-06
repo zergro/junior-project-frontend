@@ -149,8 +149,9 @@ function AddProduct() {
                     value={type}
                     onChange={(e) => handleSwitcher(e)}
                     required
+                    defaultValue={"noOption"}
                 >
-                    <option selected="selected" hidden="hidden">Select a product type</option>
+                    <option value="noOption" hidden="hidden">Select a product type</option>
                     <option value="DVD">DVD</option>
                     <option value="Book">Book</option>
                     <option value="Furniture">Furniture</option>

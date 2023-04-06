@@ -5,6 +5,7 @@ import ProductList from '../../components/productList';
 
 function App() {
   const [products, setProducts] = useState([]);
+  // console.log(products);
 
   useEffect(() => {
     axios.get('products.php')
@@ -21,13 +22,13 @@ function App() {
       <h1>Hello world!</h1>
       <br></br>
       <div className="container">
-        {products ? (
+        {products? (
           <ProductList />
-        ) : (
+          ) : (
           <>
-            null
+          null
           </>
-        )}
+          )}
       </div>
     </div>
   );

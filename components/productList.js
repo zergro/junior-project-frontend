@@ -30,24 +30,24 @@ function ProductList(props) {
   const handleMassDelete = (event) => {
     event.preventDefault();
 
-    axios.delete('products.php', { data: selectedProducts,
+    axios.delete('products.php', {
+      data: selectedProducts,
       headers: {
         'Content-Type': 'application/json'
       }
     })
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         // Update your UI to reflect the deleted products
         setProducts(products.filter((product) => !selectedProducts.includes(product.id)));
         setSelectedProducts([]);
       })
       .catch(error => {
         console.error(error);
-      })
-  };
+      })};
 
   return (
-    <div>
+    <div>      
       <div className="productListHeader">
         <h3>Product list</h3>
         <div className="productListButton">

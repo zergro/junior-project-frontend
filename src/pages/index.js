@@ -8,7 +8,7 @@ function App() {
   // console.log(products);
 
   useEffect(() => {
-    axios.get('products.php')
+    axios.get('products.php', {withCredentials: true})
       .then((response) => {
         setProducts(response.data);
       })

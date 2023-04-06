@@ -47,7 +47,7 @@ function AddProduct() {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then((response) => {
+            }, {withCredentials: true}).then((response) => {
                 console.log(response.data);
                 if (response.status === 201) {
                     console.log("Success");

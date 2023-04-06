@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     console.log(window.location.origin);
-    axios.get('products.php', {withCredentials: true})
+    axios.get('products.php')
       .then((response) => {
         setProducts(response.data);
       })

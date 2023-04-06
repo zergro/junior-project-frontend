@@ -9,7 +9,7 @@ function ProductList(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('products.php', {withCredentials: true})
+    axios.get('products.php')
       .then((response) => {
         setProducts(response.data);
       })
@@ -35,7 +35,7 @@ function ProductList(props) {
       headers: {
         'Content-Type': 'application/json'
       }
-    }, {withCredentials: true})
+    })
       .then(response => {
         console.log(response.data);
         // Update your UI to reflect the deleted products

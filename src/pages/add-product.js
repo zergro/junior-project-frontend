@@ -44,7 +44,7 @@ function AddProduct() {
                 dimension: formattedDimensions
             };
             // console.log(dataToSend);
-            axios.post('products.php', dataToSend, { withCredentials: true })
+            axios.post('products.php', dataToSend)
                 .then((response) => {
                     if (response.status === 201) {
                         console.log("Success");

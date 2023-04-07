@@ -44,7 +44,9 @@ function AddProduct() {
                 dimension: formattedDimensions
             };
             // console.log(dataToSend);
-            axios.post('products.php', dataToSend)
+            axios.post('products.php', dataToSend, {
+                headers: { Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_SECRET_TOKEN }
+            })
                 .then((response) => {
                     if (response.status === 201) {
                         console.log("Success");
